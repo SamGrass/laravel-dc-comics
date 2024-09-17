@@ -3,7 +3,10 @@
 @section('content')
 
 <div class="container my-5">
-    <h1>I miei Fumetti</h1>
+    <div>
+        <h1 class="d-inline">I miei Fumetti</h1>
+        <a href="" class="btn btn-primary float-end"><i class="fa-solid fa-plus"></i></a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -27,9 +30,9 @@
                 <td>{{ $comic->sale_date}}</td>
                 <td>
                     <div class="d-flex gap-1">
-                        <a href="{{ route('comics.show', 'comic') }}" class="btn btn-success"><i
+                        <a href="{{ route('comics.show', $comic) }}" class="btn btn-success"><i
                                 class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('comics.edit', 'comic') }}" class="btn btn-warning"><i
+                        <a href="{{ route('comics.edit', $comic) }}" class="btn btn-warning"><i
                                 class="fa-solid fa-pencil"></i></a>
                     </div>
                 </td>
