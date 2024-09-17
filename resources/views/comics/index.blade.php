@@ -5,7 +5,7 @@
 <div class="container my-5">
     <div>
         <h1 class="d-inline">I miei Fumetti</h1>
-        <a href="" class="btn btn-primary float-end"><i class="fa-solid fa-plus"></i></a>
+        <a href="{{ route('comics.create') }}" class="btn btn-primary float-end"><i class="fa-solid fa-plus"></i></a>
     </div>
     <table class="table">
         <thead>
