@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comic extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'thumb',
+        'description',
+        'price',
+        'series',
+        'sale_date',
+        'type'
+    ];
 }
