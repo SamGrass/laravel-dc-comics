@@ -13,7 +13,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::all();
+        $comics = Comic::orderBy('id', 'desc')->get();
         return view('comics.index', compact('comics'));
     }
 
@@ -44,7 +44,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        dump($comic);
+
         return view('comics.show', compact('comic'));
     }
 
@@ -61,7 +61,15 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        if ($data['title'] === $comic->title) {
+            $data['slug'] = $comic->slug;
+        } else {
+            $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
+        }
+        $comic->update($data);
+        dump($data);
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -69,6 +77,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }
