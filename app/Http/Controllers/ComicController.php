@@ -36,7 +36,7 @@ class ComicController extends Controller
         $new_comic->fill($data);
         $new_comic->save();
 
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.show', $new_comic->id);
     }
 
     /**
@@ -44,7 +44,6 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-
         return view('comics.show', compact('comic'));
     }
 
@@ -68,8 +67,7 @@ class ComicController extends Controller
             $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
         }
         $comic->update($data);
-        dump($data);
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.show', $comic);
     }
 
     /**
