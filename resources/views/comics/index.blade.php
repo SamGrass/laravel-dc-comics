@@ -34,6 +34,7 @@
                                 class="fa-solid fa-eye"></i></a>
                         <a href="{{ route('comics.edit', $comic) }}" class="btn btn-warning"><i
                                 class="fa-solid fa-pencil"></i></a>
+                        @include('partials.deletecomic')
                     </div>
                 </td>
             </tr>
